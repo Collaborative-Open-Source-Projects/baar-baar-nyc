@@ -1,7 +1,5 @@
-"use client";
-
-import Image from "next/image";
+'use client';
 
 export default function Test() {
-  return (<h1>Hello</h1>);
+    return <h1>Hello</h1>;
 }
