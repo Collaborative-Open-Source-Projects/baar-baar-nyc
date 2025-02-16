@@ -25,18 +25,20 @@ const NavBar = () => {
     }, []);
 
     return (
-        <nav className={`fixed top-0 left-0 w-full z-50 transition-opacity duration-300 ${isScrolled ? "bg-black opacity-90" : "bg-black opacity-70"} p-3 flex justify-center items-center gap-10`}>
-            <NavLinkGenerator navLink={NavLinks1} />
-            <Image
-                src={Logo}
-                alt="Logo"
-                className="max-w-28 cursor-pointer"
-                onClick={() => router.push("/")}
-            />
-            <NavLinkGenerator navLink={NavLinks2} />
-            <button className="absolute right-5 top-1/2 -translate-y-1/2 text-white border-2 border-accent px-3 py-0.5 rounded-sm hover:bg-accent transition-colors duration-200 ease-in">
-                RESERVATIONS
-            </button>
+        <nav className={`fixed top-0 left-0 w-full z-50 ${isScrolled ? "bg-black/90" : "bg-black/30"} px-5 py-1 flex justify-center items-center gap-10 transition-all duration-200 ease-in`}>
+            <div className="flex justify-center items-center gap-10">
+                <NavLinkGenerator navLink={NavLinks1} />
+                <Image
+                    src={Logo}
+                    alt="Logo"
+                    className="max-w-28 cursor-pointer"
+                    onClick={() => router.push("/")}
+                />
+                <NavLinkGenerator navLink={NavLinks2} />
+                <button className="absolute text-sm font-semibold right-10 top-1/2 -translate-y-1/2 text-white border-2 border-accent px-3 py-0.5 rounded-sm hover:bg-accent transition-colors duration-200 ease-in">
+                    RESERVATIONS
+                </button>
+            </div>
         </nav>
     );
 };
@@ -45,7 +47,7 @@ export default NavBar;
 
 const NavLinkGenerator = ({ navLink }) => {
     return (
-        <ul className="flex gap-10 text-white">
+        <ul className="flex gap-10 text-white text-sm">
             {navLink.map((link) => (
                 <li key={link.path} className="hover:text-accent transition-colors duration-200">
                     <Link href={link.path}>{link.name.toUpperCase()}</Link>
