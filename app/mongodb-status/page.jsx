@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
 export default function DBStatus() {
     const [isConnected, setIsConnected] = useState(null);
@@ -13,17 +13,19 @@ export default function DBStatus() {
                 setIsConnected(false);
             });
     }, []);
-        
+
     return (
         <div style={{ textAlign: 'center', marginTop: '50px' }}>
-      <h1>MongoDB Connection Status</h1>
-      {isConnected === null ? (
-        <h2>Checking connection...</h2>
-      ) : isConnected ? (
-        <h2 style={{ color: 'green' }}>Successfully connected to MongoDB!</h2>
-      ) : (
-        <h2 style={{ color: 'red' }}>Failed to connect to MongoDB.</h2>
-      )}
-    </div>
-    )
+            <h1>MongoDB Connection Status</h1>
+            {isConnected === null ? (
+                <h2>Checking connection...</h2>
+            ) : isConnected ? (
+                <h2 style={{ color: 'green' }}>
+                    Successfully connected to MongoDB!
+                </h2>
+            ) : (
+                <h2 style={{ color: 'red' }}>Failed to connect to MongoDB.</h2>
+            )}
+        </div>
+    );
 }
