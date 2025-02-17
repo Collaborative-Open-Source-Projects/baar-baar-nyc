@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@300;400;600&display=swap');
+
+.footer-centered {
+        background-image: url("/images/footerTexture.jpg");
+    /* -webkit-filter: brightness(110%) contrast(116%) grayscale(0%) hue-rotate(342deg) invert(0%) opacity(100%) saturate(84%) sepia(0%);
+    filter: brightness(110%) contrast(116%) grayscale(0%) hue-rotate(342deg) invert(0%) opacity(100%) saturate(84%) sepia(0%); */
+    mix-blend-mode: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: left;
+    gap: 100px;
+    padding: 120px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.footer-logo {
+    width: 145px;
+}
+
+h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    color: #f3eded;
+}
+
+h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2rem;
+    color: #ffffff;
+}
+
+h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.4rem;
+    color: #ffffff;
+}
+
+p {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 100;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #efe9e9;
+}
+
+.footer-take-top{
+    padding-top: 20px;
+}
