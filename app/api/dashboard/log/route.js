@@ -8,13 +8,14 @@ export async function POST(req) {
         const db = client.db(process.env.DATABASE);
         const logsCollection = db.collection(process.env.LOG_COLLECTION);
 
-        const { userAgent, ip, page, timestamp } = await req.json();
+        const { userAgent, ip, country, page, timestamp } = await req.json();
         const parser = new UAParser(userAgent);
         const result = parser.getResult();
 
         const userData = {
             page,
             ip,
+            country,
             browser: result.browser.name || 'Unknown',
             os: result.os.name || 'Unknown',
             device: result.device.type || 'Desktop',
