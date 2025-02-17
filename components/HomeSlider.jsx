@@ -35,10 +35,10 @@ const HomeSlider = () => {
                     {SliderImages.slice(currentPage, currentPage + sliderPerPage).map((img, index) => (
                         <motion.div
                             key={img.image + currentPage}
-                            initial={{ opacity: 1, x: 100 }}
+                            initial={{ opacity: 0, x: 100 }}
                             animate={{ opacity: 1, x: 0 }}
                             exit={{ opacity: 1, x: -100 }}
-                            transition={{ duration: 0.6, ease: "easeIn" }}
+                            transition={{ duration: 0.6, ease: "easeInOut" }}
                         >
                             <Image src={img.image} alt={img.name} />
                         </motion.div>
@@ -46,13 +46,16 @@ const HomeSlider = () => {
                 </AnimatePresence>
 
                 <button
-                    className="absolute right-4 top-0 bottom-0 translate-y-1/2"
+                    onClick={prevSlide}
+                    className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 p-3 rounded-full text-white"
+                >
+                    <ArrowLeft />
+                </button>
+                <button
                     onClick={nextSlide}
+                    className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 p-3 rounded-full text-white"
                 >
                     <ArrowRight />
-                </button>
-                <button onClick={prevSlide}>
-                    <ArrowLeft />
                 </button>
             </div>
         </main>
