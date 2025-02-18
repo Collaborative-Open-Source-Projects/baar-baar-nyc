@@ -28,25 +28,23 @@ const HomeSlider = () => {
     }, [currentPage]);
 
     return (
-        <main>
-            <div className="relative">
-                {SliderImages.slice(currentPage, currentPage + sliderPerPage).map((img, index) => (
-                    <Image src={img.image} alt={img.name} key={index} />
-                ))}
-                <button
-                    onClick={prevSlide}
-                    className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 p-3 rounded-full text-white"
-                >
-                    <ArrowLeft />
-                </button>
-                <button
-                    onClick={nextSlide}
-                    className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 p-3 rounded-full text-white"
-                >
-                    <ArrowRight />
-                </button>
-            </div>
-        </main>
+        <div className="relative min-h-screen">
+            {SliderImages.slice(currentPage, currentPage + sliderPerPage).map((img, index) => (
+                <Image src={img.image} alt={img.name} key={index} className="w-full h-full absolute inset-0 object-cover" />
+            ))}
+            <button
+                onClick={prevSlide}
+                className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 p-3 rounded-full text-white"
+            >
+                <ArrowLeft />
+            </button>
+            <button
+                onClick={nextSlide}
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 p-3 rounded-full text-white"
+            >
+                <ArrowRight />
+            </button>
+        </div>
     );
 };
 
