@@ -1,8 +1,8 @@
-import BannerUploader from "@/components/Test";
+import BannerUploader from '@/components/Test';
 
 export default function BannerPage() {
     return (
-        <div className="pt-20">
+        <div className='pt-20'>
             <BannerUploader />
         </div>
     );
