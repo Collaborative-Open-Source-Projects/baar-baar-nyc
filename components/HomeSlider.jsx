@@ -4,7 +4,6 @@ import { SliderImages } from "@/data/slider.data";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 
 const HomeSlider = () => {
     const [currentPage, setCurrentPage] = useState(0);
@@ -31,20 +30,9 @@ const HomeSlider = () => {
     return (
         <main>
             <div className="relative">
-                <AnimatePresence>
-                    {SliderImages.slice(currentPage, currentPage + sliderPerPage).map((img, index) => (
-                        <motion.div
-                            key={img.image + currentPage}
-                            initial={{ opacity: 0, x: 100 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            exit={{ opacity: 1, x: -100 }}
-                            transition={{ duration: 0.6, ease: "easeInOut" }}
-                        >
-                            <Image src={img.image} alt={img.name} />
-                        </motion.div>
-                    ))}
-                </AnimatePresence>
-
+                {SliderImages.slice(currentPage, currentPage + sliderPerPage).map((img, index) => (
+                    <Image src={img.image} alt={img.name} key={index} />
+                ))}
                 <button
                     onClick={prevSlide}
                     className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 p-3 rounded-full text-white"
