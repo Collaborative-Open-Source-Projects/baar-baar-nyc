@@ -1,38 +1,56 @@
-import multer from 'multer';
 import { NextResponse } from 'next/server';
 import clientPromise from '@/lib/mongodb';
 
-const upload = multer({ storage: multer.memoryStorage() });
-
-const parseForm = (req) =>
-    new Promise((resolve, reject) => {
-        upload.single('banner')(req, {}, (err) => {
-            if (err){ return reject(err); }
-            resolve(req.file);
-        });
-    });
-
 export async function POST(req) {
     try {
-        const file = await parseForm(req);
-        if (!file){
+        const formData = await req.formData();
+        const file = formData.get('banner');
+        if (!file) {
             return NextResponse.json(
                 { error: 'No file uploaded' },
                 { status: 400 },
             );
         }
 
+        const bytes = await file.arrayBuffer();
+        const buffer = Buffer.from(bytes);
+
         const client = await clientPromise;
         const db = client.db(process.env.DATABASE);
-        const imageBuffer = file.buffer.toString('base64');
+        const imageBuffer = buffer.toString('base64');
 
-        const result = await db.collection('banners').insertOne({
-            image: imageBuffer,
-            contentType: file.mimetype,
-        });
+        // Check if a banner already exists
+        const existingBanner = await db.collection('banners').findOne({});
+
+        let result;
+        if (existingBanner) {
+            // Replace the existing banner
+            result = await db.collection('banners').updateOne(
+                { _id: existingBanner._id },
+                {
+                    $set: {
+                        image: imageBuffer,
+                        contentType: file.type,
+                        updatedAt: new Date(),
+                    },
+                },
+            );
+        } else {
+            // Insert new if none exists
+            result = await db.collection('banners').insertOne({
+                image: imageBuffer,
+                contentType: file.type,
+                createdAt: new Date(),
+            });
+        }
 
         return NextResponse.json(
-            { message: 'Uploaded successfully', id: result.insertedId },
+            {
+                message: existingBanner
+                    ? 'Banner replaced successfully'
+                    : 'Banner uploaded successfully',
+                id: existingBanner ? existingBanner._id : result.insertedId,
+            },
             { status: 201 },
         );
     } catch (error) {
