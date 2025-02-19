@@ -4,10 +4,12 @@ export function middleware(req) {
     const page = req.nextUrl.pathname;
     const userAgent = req.headers.get('user-agent') || 'Unknown';
     const ip = req.headers.get('x-forwarded-for') || req.ip || 'Unknown';
+    const country = req.headers.get('x-vercel-ip-country') || 'Unknown';
 
     const logData = {
         userAgent,
         ip,
+        country,
         page,
         timestamp: new Date().toISOString(),
     };
