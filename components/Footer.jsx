@@ -5,12 +5,21 @@ import { faFacebookF, faInstagram, faTwitter } from '@fortawesome/free-brands-sv
 
 export default function Footer() {
     return (
-        <footer 
-            className='bg-cover bg-center bg-no-repeat flex flex-col md:flex-row justify-center text-left gap-16 p-16 font-poppins' 
-            style={{ backgroundImage: 'url("/images/footerTexture.jpg")' }}
-        >
+        <footer
+        className='bg-center bg-no-repeat flex flex-col md:flex-row justify-center text-left gap-16 p-16 font-poppins'
+        style={{
+            backgroundImage: 'url("/images/footerTexture.jpg")',
+            backgroundRepeat: 'repeat-y',
+            backgroundSize: '100% 20%' // Makes the background repeat exactly twice
+        }}
+    >
             <div className='w-36'>
-                <Image src='/images/FooterLogo.png' alt='Logo' width={144} height={144} />
+                <Image
+                    src='/images/FooterLogo.png'
+                    alt='Logo'
+                    width={144}
+                    height={144}
+                />
                 <p className='text-sm text-[#DDDDDD] mt-2'>&copy; 2025 Baar Baar Site by PSD</p>
             </div>
 
@@ -40,10 +49,17 @@ export default function Footer() {
 
                 <h2 className='text-lg text-white mt-4'>Contact</h2>
                 <p className='text-sm text-[#DDDDDD]'>
-                    <a href='mailto:info@baarbaarnyc.com' className='hover:underline hover:text-white'>info@baarbaarnyc.com</a>
+                    <a
+                        href='mailto:info@baarbaarnyc.com'
+                        className='hover:underline hover:text-white'
+                    >
+                        info@baarbaarnyc.com
+                    </a>
                 </p>
                 <p className='text-sm text-[#DDDDDD]'>
-                    <a href='tel:2122281200' className='hover:underline hover:text-white'>212.228.1200</a>
+                    <a href='tel:2122281200' className='hover:underline hover:text-white'>
+                        212.228.1200
+                    </a>
                 </p>
             </div>
 
