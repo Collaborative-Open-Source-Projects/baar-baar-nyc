@@ -29,7 +29,9 @@ const NavBar = () => {
     }, []);
 
     return (
-        <nav className={`fixed top-0 left-0 w-full z-50 ${isScrolled ? 'bg-black/90' : 'bg-black/30'} px-5 py-2 flex justify-between items-center transition-all duration-200 ease-in`}>
+        <nav
+            className={`fixed top-0 left-0 w-full z-50 ${isScrolled ? 'bg-black/90' : 'bg-black/30'} px-5 py-2 flex justify-between items-center transition-all duration-200 ease-in`}
+        >
             <div className='hidden md:flex justify-center items-center gap-10 w-full'>
                 <ul className='flex flex-col md:flex-row gap-5 md:gap-10 text-white text-sm'>
                     {NavLinks1.map((link) => (
@@ -37,7 +39,9 @@ const NavBar = () => {
                             key={link.path}
                             className='hover:text-accent transition-colors duration-200'
                         >
-                            <Link href={link.path}>{link.name.toUpperCase()}</Link>
+                            <Link href={link.path}>
+                                {link.name.toUpperCase()}
+                            </Link>
                         </li>
                     ))}
                 </ul>
@@ -53,7 +57,9 @@ const NavBar = () => {
                             key={link.path}
                             className='hover:text-accent transition-colors duration-200'
                         >
-                            <Link href={link.path}>{link.name.toUpperCase()}</Link>
+                            <Link href={link.path}>
+                                {link.name.toUpperCase()}
+                            </Link>
                         </li>
                     ))}
                 </ul>
@@ -62,7 +68,10 @@ const NavBar = () => {
                 </button>
             </div>
             <div className='md:hidden flex justify-between items-center w-full'>
-                <button onClick={() => setIsMenuOpen(!isMenuOpen)} className='text-white p-2 z-30'>
+                <button
+                    onClick={() => setIsMenuOpen(!isMenuOpen)}
+                    className='text-white p-2 z-30'
+                >
                     {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
                 </button>
                 <Image
@@ -80,7 +89,9 @@ const NavBar = () => {
                                 key={link.path}
                                 className='hover:text-accent transition-colors duration-200'
                             >
-                                <Link href={link.path}>{link.name.toUpperCase()}</Link>
+                                <Link href={link.path}>
+                                    {link.name.toUpperCase()}
+                                </Link>
                             </li>
                         ))}
                     </ul>
